@@ -1,0 +1,11 @@
+gym
+mujoco
+pybullet
+pygame
+numpy
+mujoco_viewer
+opencv-python
+matplotlib
+pyopengl
+pyopengl-accelerate
+dotenv

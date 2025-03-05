@@ -1,0 +1,38 @@
+<mujoco>
+    <worldbody>
+        <!-- Ground Plane -->
+        <geom name="ground" type="plane" size="10 10 0.1" rgba="0.2 0.6 0.2 1"/>
+
+        <!-- Hexacopter Body -->
+        <body name="hexacopter" pos="0 0 1">
+            <joint type="free"/>
+            <geom type="sphere" size="0.2" rgba="1 0 0 1"/>
+
+            <!-- Rotors -->
+            <body name="rotor1" pos="0.3 0.3 0">
+                <joint name="motor1" type="hinge" axis="0 0 1"/>
+                <geom type="cylinder" size="0.05 0.02" rgba="1 1 1 1"/>
+            </body>
+            <body name="rotor2" pos="-0.3 0.3 0">
+                <joint name="motor2" type="hinge" axis="0 0 1"/>
+                <geom type="cylinder" size="0.05 0.02" rgba="1 1 1 1"/>
+            </body>
+            <body name="rotor3" pos="0.3 -0.3 0">
+                <joint name="motor3" type="hinge" axis="0 0 1"/>
+                <geom type="cylinder" size="0.05 0.02" rgba="1 1 1 1"/>
+            </body>
+            <body name="rotor4" pos="-0.3 -0.3 0">
+                <joint name="motor4" type="hinge" axis="0 0 1"/>
+                <geom type="cylinder" size="0.05 0.02" rgba="1 1 1 1"/>
+            </body>
+        </body>
+    </worldbody>
+
+    <!-- Move actuators here -->
+    <actuator>
+        <motor joint="motor1" ctrlrange="-1 1"/>
+        <motor joint="motor2" ctrlrange="-1 1"/>
+        <motor joint="motor3" ctrlrange="-1 1"/>
+        <motor joint="motor4" ctrlrange="-1 1"/>
+    </actuator>
+</mujoco>

@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<robot name="hexacopter">
+    
+    <!-- Hexacopter Body -->
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="5.0"/>
+            <inertia ixx="0.02" iyy="0.02" izz="0.02" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.3" length="0.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.5 0.5 0.5 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.3" length="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Rotors -->
+    <joint name="motor1" type="continuous">
+        <parent link="base_link"/>
+        <child link="rotor1"/>
+        <origin xyz="0.3 0.3 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    <link name="rotor1">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="motor2" type="continuous">
+        <parent link="base_link"/>
+        <child link="rotor2"/>
+        <origin xyz="-0.3 0.3 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    <link name="rotor2">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="motor3" type="continuous">
+        <parent link="base_link"/>
+        <child link="rotor3"/>
+        <origin xyz="0.3 -0.3 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    <link name="rotor3">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="motor4" type="continuous">
+        <parent link="base_link"/>
+        <child link="rotor4"/>
+        <origin xyz="-0.3 -0.3 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    <link name="rotor4">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="motor5" type="continuous">
+        <parent link="base_link"/>
+        <child link="rotor5"/>
+        <origin xyz="0 -0.4 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    <link name="rotor5">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="motor6" type="continuous">
+        <parent link="base_link"/>
+        <child link="rotor6"/>
+        <origin xyz="0 0.4 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    <link name="rotor6">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.02"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Actuators -->
+    <transmission name="motor1_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="motor1"/>
+        <actuator name="motor1_actuator"/>
+    </transmission>
+
+    <transmission name="motor2_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="motor2"/>
+        <actuator name="motor2_actuator"/>
+    </transmission>
+
+    <transmission name="motor3_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="motor3"/>
+        <actuator name="motor3_actuator"/>
+    </transmission>
+
+    <transmission name="motor4_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="motor4"/>
+        <actuator name="motor4_actuator"/>
+    </transmission>
+
+    <transmission name="motor5_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="motor5"/>
+        <actuator name="motor5_actuator"/>
+    </transmission>
+
+    <transmission name="motor6_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="motor6"/>
+        <actuator name="motor6_actuator"/>
+    </transmission>
+
+</robot>

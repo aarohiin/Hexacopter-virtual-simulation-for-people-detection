@@ -1,111 +1,91 @@
 Hexacopter Simulation with Human Detection
-This project simulates a hexacopter (UAV) hovering and detecting people in a PyBullet environment using YOLOv8 for human detection. The UAV hovers and moves around while detecting and counting people dynamically.
+A sophisticated simulation system combining robotics and computer vision to detect humans using a simulated hexacopter in a PyBullet environment. The system leverages YOLOv8 for accurate human detection while maintaining smooth UAV movement and logging capabilities.
 
-🔹 Features
-✅ Hexacopter UAV Simulation using PyBullet
-✅ Dynamic People Spawning and movement
-✅ YOLOv8-based Human Detection
-✅ Automatic Logging of per-iteration results (log.txt) in a tabular format
-✅ Smooth UAV Hovering & Movement
+Key Features
+Realistic hexacopter simulation using PyBullet physics engine
+Dynamic human spawning and movement patterns
+Advanced YOLOv8-based human detection system
+Comprehensive logging system with tabular data storage
+Smooth UAV hovering and navigation algorithms
+Installation
 
-🔹 Installation
-1️⃣ Set Up the Virtual Environment
-bash
-Copy
-Edit
-# Create a virtual environment
+1
+Set up virtual environment
+
 python -m venv uavenv
-
-# Activate the environment
 # Windows
 uavenv\Scripts\activate
-
 # Linux/macOS
 source uavenv/bin/activate
-2️⃣ Install Required Dependencies
-bash
-Copy
-Edit
+
+2
+Install dependencies
+
 pip install -r requirements.txt
-If ultralytics (YOLO) is missing, install it manually:
-
-bash
-Copy
-Edit
 pip install ultralytics opencv-python pandas pybullet
-3️⃣ Run the Simulation
-bash
-Copy
-Edit
-python main.py
-🔹 File Structure
-bash
-Copy
-Edit
-📂 HEX-Simulation/
- ├── humanoid.urdf              # URDF model for humanoid (people)
- ├── hexacopter.urdf            # URDF model for the hexacopter
- ├── main.py                    # Main simulation script
- ├── hexacopter_env.py          # UAV environment logic
- ├── people_simulation.py       # People spawning and movement logic
- ├── log.txt                    # Stores per-iteration results in tabular format
- ├── requirements.txt           # Python dependencies
- ├── README.md                  # This documentation
-🔹 Simulation Workflow
-1️⃣ Starts PyBullet GUI and loads the environment.
-2️⃣ Hexacopter takes off and starts hovering & moving.
-3️⃣ People randomly spawn in the environment.
-4️⃣ YOLOv8 detects people and logs their count.
-5️⃣ Results are saved in log.txt (Iteration, People Count, UAV Position).
-6️⃣ Simulation runs for 100 iterations (can be modified).
+Project Structure
+HEX-Simulation/
+├── humanoid.urdf      # Humanoid robot definition
+├── hexacopter.urdf    # Hexacopter drone definition
+├── main.py           # Primary simulation controller
+├── hexacopter_env.py # UAV environment logic
+├── people_simulation.py # Human simulation handling
+├── log.txt          # Simulation results log
+├── requirements.txt  # Project dependencies
+└── README.md        # Documentation
+Simulation Workflow
 
-🔹 Expected Output
-1️⃣ Log File (log.txt) Example
-python-repl
-Copy
-Edit
-Iteration   People Count    UAV_X   UAV_Y   UAV_Z
-1           3              0.2     0.5     1.0
-2           5              0.4     0.6     1.2
-3           2              0.3     0.8     1.1
-...
-2️⃣ PyBullet GUI Simulation
-The UAV should be hovering and moving around.
-People should be dynamically appearing and being detected by YOLOv8.
-The camera view should update as the UAV moves.
-🔹 Troubleshooting
-1️⃣ ModuleNotFoundError: No module named 'ultralytics'
-Run:
+1
+Initialize PyBullet environment
 
-bash
-Copy
-Edit
+2
+Load hexacopter model and begin hovering sequence
+
+3
+Spawn human entities with random movement patterns
+
+4
+Activate YOLOv8 detection system
+
+5
+Record simulation metrics in log.txt
+
+6
+Continue for configurable iterations (default: 100)
+Expected Output
+Log Format (log.txt):
+
+
+Iteration People Count UAV_X UAV_Y UAV_Z
+1       3           0.2     0.5     1.0
+2       5           0.4     0.6     1.2
+3       2           0.3     0.8     1.1
+PyBullet Visualization:
+
+Active hexacopter with camera feed
+Dynamic human entities moving in environment
+Real-time detection overlays
+Smooth UAV movement visualization
+Troubleshooting Guide
+1. Missing Dependencies:
+
+
 pip install ultralytics
-Then retry:
+2. Logging Issues:
 
-bash
-Copy
-Edit
-python main.py
-2️⃣ log.txt is missing
-Ensure the script has write permissions in the directory.
-Try running the script as Administrator (Windows) or using sudo (Linux/macOS).
-3️⃣ UAV Not Moving / People Not Detected
-Ensure hexacopter_env.py has the hover_and_move() function implemented.
-Check YOLO model is loading correctly in people_simulation.py.
-Try adjusting confidence threshold in people_simulation.py:
-python
-Copy
-Edit
-self.model = YOLO("yolov8n.pt")
-self.conf_threshold = 0.3  # Reduce threshold for better detections
-🔹 Future Improvements
-🚀 Add real-time UAV control
-🚀 Improve YOLO model accuracy using larger models
-🚀 Implement better person movement patterns
+Verify write permissions in project directory
+Run script with elevated privileges if needed
+3. Detection Problems:
 
-💡 Author
+Confirm hover_and_move() implementation
+Validate YOLO model loading
+Adjust confidence threshold (default: 0.3)
+Future Development Opportunities
+Implement real-time manual UAV control
+Enhance detection accuracy with larger YOLO models
+Develop more sophisticated human movement patterns
+Add obstacle avoidance algorithms
+About the Author
 Aarohi Singh
-📍 MIT WPU, Pune
-🚀 AI & ML | UAV Simulations | Robotics
-
+MIT WPU, Pune
+Specializing in AI, Machine Learning, UAV Systems, and Robotics Applications
